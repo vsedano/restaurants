@@ -1,0 +1,22 @@
+{
+  "name": "restaurants",
+  "version": "1.0.0",
+  "description": "Proyecto intelimétrica -- Aplicación para obtener información útil de restaurants",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vsedano/restaurants.git"
+  },
+  "author": "Victoria Sedano",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vsedano/restaurants/issues"
+  },
+  "homepage": "https://github.com/vsedano/restaurants#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
