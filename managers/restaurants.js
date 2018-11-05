@@ -24,8 +24,22 @@ const getByStatisticsM = (lat, lng, r) => {
         r = parseFloat(r)
         const distance = r/100000
         console.log(distance)
+        var count = Restaurant.count({
+            where: sequelize.where(
+                sequelize.fn(
+                'ST_DWithin',
+                    sequelize.literal('geom'),
+                    sequelize.fn('ST_SetSRID', sequelize.fn('ST_MakePoint', lng, lat), 32619),
+                distance), true
+            )
+          });
+          console.log(count)
         Restaurant.findAll({
-            attributes: ['id', 'name', 'street', 'geom'],
+            attributes: [
+                [sequelize.fn('COUNT', sequelize.col('id')), 'Count'],
+                [sequelize.fn('AVG', sequelize.col('rating')), 'AVG'],
+                [sequelize.fn('STDDEV', sequelize.col('rating')), 'STD'],
+            ],
             where: sequelize.where(
                 sequelize.fn(
                 'ST_DWithin',
@@ -34,7 +48,7 @@ const getByStatisticsM = (lat, lng, r) => {
                 distance), true
             )
         }).then(rest => {
-            console.log(rest)
+            console.log(rest.length)
             resolve(rest)
         }).catch(error => {
             console.log(error)
