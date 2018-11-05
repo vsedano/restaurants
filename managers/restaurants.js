@@ -20,20 +20,7 @@ const getByStatisticsM = (lat, lng, r) => {
     return new Promise((resolve, reject) => {
         lat = parseFloat(lat)
         lng = parseFloat(lng)
-        console.log(r)
-        r = parseFloat(r)
-        const distance = r/100000
-        console.log(distance)
-        var count = Restaurant.count({
-            where: sequelize.where(
-                sequelize.fn(
-                'ST_DWithin',
-                    sequelize.literal('geom'),
-                    sequelize.fn('ST_SetSRID', sequelize.fn('ST_MakePoint', lng, lat), 32619),
-                distance), true
-            )
-          });
-          console.log(count)
+        const distance = parseFloat(r)/100000
         Restaurant.findAll({
             attributes: [
                 [sequelize.fn('COUNT', sequelize.col('id')), 'Count'],
@@ -48,10 +35,9 @@ const getByStatisticsM = (lat, lng, r) => {
                 distance), true
             )
         }).then(rest => {
-            console.log(rest.length)
             resolve(rest)
         }).catch(error => {
-            console.log(error)
+            reject(error)
         })
     })
 }
