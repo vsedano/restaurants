@@ -92,7 +92,6 @@ const deleteRestaurant = (req, res) => {
 }
 
 const getRestaurantsByStatistics = (req, res) => {
-    console.log(req.params)
     getByStatisticsM(req.params.latitude, req.params.longitude, req.params.radius).then(r => {
         res.status(200).json(r)
     }).catch(error => {
