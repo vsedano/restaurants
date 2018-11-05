@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "vsa11",
+    "password": "vickys1021",
+    "database": "dbrestaurant",
+    "host": "dbrestaurant.crr9uwyo6rph.us-east-1.rds.amazonaws.com",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "vsa11",
+    "password": "vickys1021",
+    "database": "dbrestaurant",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
