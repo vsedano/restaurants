@@ -1,4 +1,4 @@
-import {getRestaurantByIdM} from '../managers/restaurants'
+import {getRestaurantByIdM, getByStatisticsM} from '../managers/restaurants'
 import db from '../models'
 const Restaurant = db.Restaurant
 
@@ -91,6 +91,15 @@ const deleteRestaurant = (req, res) => {
     })
 }
 
+const getRestaurantsByStatistics = (req, res) => {
+    console.log(req.params)
+    getByStatisticsM(req.params.latitude, req.params.longitude, req.params.radius).then(r => {
+        res.status(200).json(r)
+    }).catch(error => {
+        res.status(400).json(error)
+    })
+}
+
 export {
     newRestaurant,
     getAllRestaurants,
@@ -98,5 +107,6 @@ export {
     getRestaurantsByName,
     updateRestaurant,
     updateRating,
-    deleteRestaurant
+    deleteRestaurant,
+    getRestaurantsByStatistics
 }

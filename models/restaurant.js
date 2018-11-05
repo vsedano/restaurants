@@ -95,7 +95,7 @@ module.exports = (sequelize, DataTypes) => {
           args: true, 
           msg: 'Se requiere la longitud del restaurant'}
       }
-    },
+    }
   }, {});
   Restaurant.associate = function(models) {
     // associations can be defined here

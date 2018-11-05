@@ -4,7 +4,8 @@ import {
     newRestaurant, 
     getAllRestaurants, getRestaurantById, getRestaurantsByName,
     updateRestaurant, updateRating,
-    deleteRestaurant
+    deleteRestaurant,
+    getRestaurantsByStatistics
 } from '../controllers/restaurants'
 
 const router = express.Router()
@@ -16,5 +17,7 @@ router.get('/restaurants/:name', getRestaurantsByName)
 router.put('/restaurant/:id', updateRestaurant)
 router.patch('/restaurant/:id', updateRating)
 router.delete('/restaurant/:id', deleteRestaurant)
+
+router.get('/restaurants/statistics/:latitude&:longitude&:radius', getRestaurantsByStatistics)
 
 export default router;
